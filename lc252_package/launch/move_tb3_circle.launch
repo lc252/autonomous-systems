@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="lc252_package" type="move_tb3_circle.py" name="move_tb3" output="screen"/>
+</launch>

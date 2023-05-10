@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="lc252_package" type="image_processing_node.py" name="image_processing_node" output="screen">
+        <rosparam file="$(find demonstration2)/param/beacons.yaml" command="load" />
+    </node>
+</launch>

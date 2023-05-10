@@ -1,0 +1,63 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name="beacon_BG">
+	<static>true</static>
+          <link name='chassis_lower'>
+            <pose>0 0 0.07 0 0 0</pose>
+
+            <collision name='collision'>
+              <geometry>
+                <cylinder>
+                  <radius>.075</radius>
+		  <length>.140</length>
+                </cylinder>
+              </geometry>
+            </collision>
+
+            <visual name='visual'>
+              <geometry>
+                <cylinder>
+                  <radius>.075</radius>
+		  <length>.140</length>
+                </cylinder>
+              </geometry>
+        	<material>
+          	  <ambient>0 0 1 1</ambient>
+          	  <diffuse>0 0 1 1</diffuse>
+          	  <specular>0.1 0.1 0.1 1</specular>
+         	  <emissive>0 0 0 0</emissive>
+        	</material>
+            </visual>
+          </link>
+
+          <link name='chassis_upper'>
+            <pose>0 0 0.21 0 0 0</pose>
+
+            <collision name='collision'>
+              <geometry>
+                <cylinder>
+                  <radius>.075</radius>
+		  <length>.140</length>
+                </cylinder>
+              </geometry>
+            </collision>
+
+            <visual name='visual'>
+              <geometry>
+                <cylinder>
+                  <radius>.075</radius>
+		  <length>.140</length>
+                </cylinder>
+              </geometry>
+        	<material>
+          	  <ambient>0 1 0 1</ambient>
+          	  <diffuse>0 1 0 1</diffuse>
+          	  <specular>0.1 0.1 0.1 1</specular>
+         	  <emissive>0 0 0 0</emissive>
+        	</material>
+            </visual>
+          </link>
+
+  </model>
+</sdf>
+
