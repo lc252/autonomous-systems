@@ -1,0 +1,17 @@
+<launch>
+    <!-- Arguments -->
+    <arg name="auto_start" default="true" />    
+    <arg name="open_rviz" default="false" />    
+
+    <!-- SLAM -->
+    <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch">
+        <arg name="open_rviz" value="$(arg open_rviz)" />
+    </include>
+
+    <!-- My Node -->
+    <node pkg="demonstration3" type="demo3.py" name="my_node" output="screen"/>
+
+    <!-- RViz (don't change) -->
+    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find demonstration3)/rviz/demo3.rviz"/>
+
+</launch>
