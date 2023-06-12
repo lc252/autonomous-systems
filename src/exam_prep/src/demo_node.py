@@ -5,6 +5,8 @@ from std_msgs.msg import String
 from exam_prep.srv import demo_srv, demo_srvRequest, demo_srvResponse
 from actionlib import SimpleActionServer, SimpleActionClient
 from exam_prep.msg import multinacciAction, multinacciGoal, multinacciFeedback, multinacciResult
+import message_filters
+
 
 
 class demo_node():
@@ -23,6 +25,13 @@ class demo_node():
         self.act_srv = SimpleActionServer("multinacci", multinacciAction, self.handle_act, auto_start=False)
         self.act_srv.start()
         self.act_client = SimpleActionClient("multinacci", multinacciAction)
+
+        # synchronised messages
+        sub1 = message_filters.Subscriber("topic1", String)
+        sub2 = message_filters.Subscriber("topic2", String)
+        self.sync_sub = message_filters.ApproximateTimeSynchronizer([sub1, sub2], queue_size=1, slop=0.1)
+        self.sync_sub.registerCallback(self.synchronised_cb)
+
         
     def pub_sub_cb(self, string):
         # string = String(string)     # this line is not necessary but it allows vscode to autocomplete the methods + variables
@@ -63,6 +72,9 @@ class demo_node():
         self.act_client.wait_for_result()
         result = self.act_client.get_result()
         rospy.loginfo("%s", str(result))
+
+    def synchronised_cb(self, msg1, msg2):
+        pass
 
 
 
