@@ -21,6 +21,7 @@ class demo_node():
 
         # action server and client
         self.act_srv = SimpleActionServer("multinacci", multinacciAction, self.handle_act, auto_start=False)
+        self.act_srv.start()
         self.act_client = SimpleActionClient("multinacci", multinacciAction)
         
     def pub_sub_cb(self, string):
