@@ -32,6 +32,10 @@ class demo_node():
         self.sync_sub = message_filters.ApproximateTimeSynchronizer([sub1, sub2], queue_size=1, slop=0.1)
         self.sync_sub.registerCallback(self.synchronised_cb)
 
+        # get params, loads the params into a dict, use the ~ since they are technically private params
+        params = rospy.get_param("~/demo_node")
+        rospy.loginfo("%s", str(params))
+
         
     def pub_sub_cb(self, string):
         # string = String(string)     # this line is not necessary but it allows vscode to autocomplete the methods + variables
