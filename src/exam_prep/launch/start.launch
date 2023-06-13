@@ -1,0 +1,13 @@
+<launch>
+
+    <arg name="aaa" default="true"/>
+
+    <!-- <include file="$(find package_name")/launch/file.launch"> -->
+    <!--    <arg name="aaa" value="$(arg aaa)" -->
+    <!-- </include> -->
+
+    <node name="demo_node" type="demo_node.py" pkg="exam_prep" output="screen">
+        <rosparam file="$(find exam_prep)/param/params.yaml" command="load"/>
+    </node>
+
+</launch>
